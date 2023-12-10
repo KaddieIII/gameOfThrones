@@ -1,3 +1,5 @@
+@import 'variables';
+
 input {
   top: 65px;
   right: 5px;
@@ -18,10 +20,10 @@ input {
   .card {
       min-width: 300px;
       width: 50%;
-      border: 1px solid #ccc;
+      border: 1px solid var(--white);
       border-radius: 5px;
-      background-color: #007bff;
-      color: #333;
+      background-color: var(--primary-color);
+      color: var(--footer-color);
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       transition: 1s ease;
       margin: 5px;
@@ -38,11 +40,11 @@ input {
       }
 
       &.big {
-          min-width: 400px;
+          min-width: 350px;
           width: 70%;
           h4 {
               text-align: start;
-              border-bottom: 1px solid #2c3e50b2;
+              border-bottom: 1px solid var(--border-color-transparent);
           }
 
           h5 {
@@ -55,8 +57,8 @@ input {
           justify-content: center;
 
           &:hover {
-              color: #333;
-              background-color: #0056b3;
+              color: var(--footer-color);
+              background-color: var(--hover-color);
           }
       }
       
@@ -71,11 +73,11 @@ a {
   width: 100%;
   height: 100%;
   text-decoration: none;
-  color: #fff;
+  color: var(--white);
   transition: color 0.3s ease;
 
   &:hover {
-      color: #333;
+      color: var(--footer-color);
   }
 }
 
@@ -83,8 +85,8 @@ a {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #007bff;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--white);
   
     border: none;
     cursor: pointer;
@@ -96,7 +98,7 @@ a {
     transition: background-color 0.3s ease;
   
     &:hover {
-      background-color: #0056b3;
+      background-color: var(--hover-color);
     }
   
     .fas {
@@ -111,18 +113,18 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #007bffb2;
+  background-color: var(--primary-color-transparent);
   border-radius: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #333;
+  background-color: var(--footer-color);
 }
 
 /* For Firefox, Edge and Internet Explorer*/
 html, body {
   scrollbar-width: thin;
-  scrollbar-color: #007bffb2 #333;
+  scrollbar-color: var(--primary-color-transparent) var(--footer-color);
 }
 
 app-quotes {
