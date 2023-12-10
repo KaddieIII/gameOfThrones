@@ -21,7 +21,6 @@ export class QuotesComponent implements OnInit {
     this.api.get('v1/random/5').subscribe((response) => {
       this.loading = false;
       this.quotes = response;
-      console.log('quotes: ', this.quotes);
     });
   }
 }

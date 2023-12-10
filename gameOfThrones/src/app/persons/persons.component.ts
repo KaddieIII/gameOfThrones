@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 import { ApiService } from '../_services/api.service';
 
@@ -18,7 +18,8 @@ export class PersonsComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
   
   constructor(private api: ApiService,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              private router: Router) {}
   
   ngOnInit(): void {
     this.getPersons();
@@ -33,7 +34,6 @@ export class PersonsComponent implements OnInit, OnDestroy {
     this.api.get('v1/characters').subscribe((response) => {
       this.loading = false;
       this.persons = response;
-      console.log('this.route.snapshot.queryParams: ', this.route.snapshot.queryParams);
       this.name = this.route.snapshot.queryParams['person']
       if(this.name) {
         this.scrollIntoView();
@@ -67,6 +67,12 @@ export class PersonsComponent implements OnInit, OnDestroy {
       this.quote = '';
     }
     person.expanded = !person.expanded;
+  }
+
+  navigate(name: string) {
+    this.router.navigate(['/houses'], {
+      queryParams: { house: name },
+    });
   }
 
   randomQuote() {

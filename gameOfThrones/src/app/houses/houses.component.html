@@ -8,7 +8,7 @@
 
 <ng-template #content>
     <ng-container *ngFor="let house of houses | search: searchText; let i = index">
-        <div class="card" [ngClass]="house.expanded ? 'big' : 'small'" (click)="toggleHouse(house)">
+        <div id="{{house.name}}" class="card" [ngClass]="house.expanded ? 'big' : 'small'" (click)="toggleHouse(house)">
             <div class="card-content">
                 <h4 *ngIf="!house.expanded">{{ house.slug }}</h4>
                 <ng-container *ngIf="house.expanded">
