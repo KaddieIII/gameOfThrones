@@ -17,7 +17,7 @@
                         <h5>Members</h5>
                         <ng-container *ngFor="let member of house.members; let i = index">
                             <div class="member">
-                                <a href="persons">{{i+1}}: {{member.name}}</a>
+                                <span (click)="navigate(member.name)">{{i+1}}: {{member.name}}</span>
                             </div>
                         </ng-container>
                     </div>

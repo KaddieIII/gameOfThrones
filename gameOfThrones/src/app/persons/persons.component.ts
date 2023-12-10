@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 import { ApiService } from '../_services/api.service';
 
@@ -11,16 +12,19 @@ export class PersonsComponent implements OnInit, OnDestroy {
   loading = true;
   persons: any;
   person: any;
+  name: any;
   quote: string = '';
   searchText: string = '';
   private subscription: Subscription = new Subscription();
   
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService,
+              private route: ActivatedRoute) {}
   
   ngOnInit(): void {
     this.getPersons();
+
     this.subscription = interval(10000).subscribe(() => {
-      this.randomQuote();
+      this.nextQuote();
     });
   }
 
@@ -29,8 +33,26 @@ export class PersonsComponent implements OnInit, OnDestroy {
     this.api.get('v1/characters').subscribe((response) => {
       this.loading = false;
       this.persons = response;
-      console.log('persons: ', this.persons);
+      console.log('this.route.snapshot.queryParams: ', this.route.snapshot.queryParams);
+      this.name = this.route.snapshot.queryParams['person']
+      if(this.name) {
+        this.scrollIntoView();
+      }   
     });
+  }
+
+  scrollIntoView() {
+    let index = this.persons.findIndex((person: any) => person.name === this.name);
+    this.person = this.persons[index];
+    setTimeout(() => {
+      const entryToScrollTo = document.getElementById(this.name);
+      console.log('entryToScrollTo: ', entryToScrollTo);
+      if (entryToScrollTo) {
+        entryToScrollTo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 50);
+    
+    this.togglePerson(this.person);
   }
 
   togglePerson(person: any) {
@@ -56,12 +78,12 @@ export class PersonsComponent implements OnInit, OnDestroy {
 
   nextQuote() {
     let index = this.person.quotes.indexOf(this.quote);
-    return this.person.quotes[index === this.person.quotes.length ? 0 : index + 1];
+    this.quote = this.person.quotes[index === this.person.quotes.length - 1 ? 0 : index + 1];
   }
 
   prevQuote() {
     let index = this.person.quotes.indexOf(this.quote);
-    return this.person.quotes[index === 0 ? this.person.quotes.length : index - 1];
+    this.quote = this.person.quotes[index === 0 ? this.person.quotes.length - 1 : index - 1];
   }
 
   ngOnDestroy() {

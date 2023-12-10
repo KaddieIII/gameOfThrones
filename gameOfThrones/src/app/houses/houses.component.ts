@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from '../_services/api.service';
 
 @Component({
@@ -11,10 +12,17 @@ export class HousesComponent implements OnInit {
   houses: any;
   searchText: string = '';
   
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService,
+              private router: Router) {}
   
   ngOnInit(): void {
     this.getHouses();
+  }
+
+  navigate(name: string) {
+    this.router.navigate(['/persons'], {
+      queryParams: { person: name },
+    });
   }
 
   getHouses() {
@@ -22,7 +30,6 @@ export class HousesComponent implements OnInit {
     this.api.get('v1/houses').subscribe((response) => {
       this.loading = false;
       this.houses = response;
-      console.log('houses: ', this.houses);
     });
   }
 
