@@ -14,15 +14,20 @@
                 <ng-container *ngIf="person.expanded">
                     <h4 (click)="togglePerson(person)">{{person.name}}</h4>
                     <div class="card-description">
-                        <span (click)="navigate(person.house.name)">{{person.house.name}}</span>
+                        <span (click)="navigate(person.house?.name)">{{person.house?.name}}</span>
                         <div class="quote">
-                            <button class="circular-button menu-button" (click)="prevQuote()">
-                                <i class="fas fa-angle-left"></i>
-                            </button>
-                            <h4>"{{quote}}"</h4>
-                            <button class="circular-button menu-button" (click)="nextQuote()">
-                                <i class="fas fa-angle-right"></i>
-                            </button>
+                            <ng-container *ngIf="quote">
+                                <button class="circular-button menu-button" (click)="prevQuote()">
+                                    <i class="fas fa-angle-left"></i>
+                                </button>
+                                <h4>"{{quote}}"</h4>
+                                <button class="circular-button menu-button" (click)="nextQuote()">
+                                    <i class="fas fa-angle-right"></i>
+                                </button>
+                            </ng-container>
+                            <ng-container *ngIf="!quote">
+                                <h4>Nothing. Only silence...</h4>
+                            </ng-container>
                         </div>
                     </div>
                 </ng-container>
