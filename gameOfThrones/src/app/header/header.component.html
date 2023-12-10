@@ -3,16 +3,9 @@
         <button class="circular-button menu-button" (click)="toggleMenu()">
             <i class="fas fa-bars"></i>
         </button>
-        <app-menu *ngIf="!isCollapsed"></app-menu>
+        <app-menu (closeMenu)="closeMenu()" *ngIf="!isCollapsed"></app-menu>
     </div>
     <div class="right-content">
         <img width="150" alt="GoT Logo" src="assets/images/got_logo.png"/>
     </div>
-    <!--
-        <div class="right-content">
-            <a href="https://www.linkedin.com/in/katharina-dress-954904224/" target="_blank">
-                <img alt="linkedin Logo" src="assets/images/linkedin.png"/>
-            </a>
-        </div>
-    -->
 </div>
