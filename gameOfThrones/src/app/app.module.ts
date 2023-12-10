@@ -14,6 +14,7 @@ import { PersonsComponent } from './persons/persons.component';
 import { HousesComponent } from './houses/houses.component';
 import { QuotesComponent } from './quotes/quotes.component';
 import { SearchPipe } from './search.pipe';
+import { UnderConstructionComponent } from './under-construction/under-construction.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SearchPipe } from './search.pipe';
     PersonsComponent,
     HousesComponent,
     QuotesComponent,
-    SearchPipe
+    SearchPipe,
+    UnderConstructionComponent
   ],
   imports: [
     BrowserModule,
