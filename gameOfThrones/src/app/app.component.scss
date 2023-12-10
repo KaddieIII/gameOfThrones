@@ -1,0 +1,12 @@
+.content {
+    background-image: url('../assets/images/got_background.png');
+    background-size: cover; /* Ensure the background image covers the entire container */
+    background-position: center center; /* Center the background image horizontally and vertically */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}

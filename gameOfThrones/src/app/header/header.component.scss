@@ -1,0 +1,42 @@
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #007bffb2;
+    color: white;
+    font-weight: 600;
+    z-index: 50;
+
+    img {
+        max-height: 50px;
+        margin: 0 16px;
+    }
+
+    .left-content {
+        .circular-button { 
+            margin-left: 10px;
+        }
+
+        app-menu {
+            margin-top: 20px;
+        }
+    }
+
+    .right-content {
+        flex: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+        padding: 10px;
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+}

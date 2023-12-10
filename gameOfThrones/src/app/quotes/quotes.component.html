@@ -1,0 +1,17 @@
+<div class="quotes">
+    <ng-container *ngIf="loading; else content">
+        <i class="fas fa-sync-alt fa-spin fa-lg"></i>
+    </ng-container>
+</div>
+
+<button (click)="getQuotes()">Refresh quotes</button><br>
+
+<ng-template #content>
+    <ng-container *ngFor="let quote of quotes; let i = index">
+        <div class="quote">
+            <h4>"{{quote.sentence}}"</h4>
+            <span>{{quote.character.name}}</span>
+            <span *ngIf="quote.character.house.name">, {{quote.character.house.name}}</span>
+        </div>
+    </ng-container>
+</ng-template>

@@ -1,0 +1,110 @@
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+}
+  
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+  
+.footer-section {
+    flex: 1;
+    margin-right: 20px;
+}
+  
+.footer-section h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+  
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+  
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+  
+.footer-section a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+  
+.footer-section a:hover {
+    color: #007bff;
+}
+  
+.address p {
+    margin: 0;
+}
+  
+.social-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+  
+.social-icons li {
+    margin-right: 10px;
+}
+  
+.social-icons a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+  
+.social-icons a:hover {
+    color: #007bff;
+}
+  
+.footer-bottom {
+    text-align: center;
+    background-color: #222;
+    padding: 10px 0;
+}
+  
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.footer.collapsed {
+    height: 0px;
+    overflow: hidden;
+}
+  
+.collapse-button {
+    padding: 5px 10px;
+    right: 10px;
+    top: 10px;
+    position: absolute;
+}
+  
+@media (max-width: 768px) {
+    .footer-section {
+      flex: 1 0 100%;
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  
+    .footer-section:last-child {
+      margin-bottom: 0;
+    }
+}
+  
