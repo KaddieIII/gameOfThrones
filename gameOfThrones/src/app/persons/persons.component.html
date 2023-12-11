@@ -1,37 +1,36 @@
-<input type="text" [(ngModel)]="searchText" placeholder="Search" *ngIf="!loading">
-
-<div class="card-container">
-    <ng-container *ngIf="loading; else content">
-        <i class="fas fa-sync-alt fa-spin fa-lg"></i>
-    </ng-container>
-</div>
+<ng-container *ngIf="loading; else content">
+    <i class="fas fa-sync-alt fa-spin fa-lg"></i>
+</ng-container>
 
 <ng-template #content>
-    <ng-container *ngFor="let person of persons | search: searchText; let i = index">
-        <div id="{{person.name}}" class="card" [ngClass]="person.expanded ? 'big' : 'small'">
-            <div class="card-content">
-                <h4 *ngIf="!person.expanded" (click)="togglePerson(person)">{{ person.name }}</h4>
-                <ng-container *ngIf="person.expanded">
-                    <h4 (click)="togglePerson(person)">{{person.name}}</h4>
-                    <div class="card-description">
-                        <span (click)="navigate(person.house?.name)">{{person.house?.name}}</span>
-                        <div class="quote">
-                            <ng-container *ngIf="quote">
-                                <button class="circular-button menu-button" (click)="prevQuote()">
-                                    <i class="fas fa-angle-left"></i>
-                                </button>
-                                <h4>"{{quote}}"</h4>
-                                <button class="circular-button menu-button" (click)="nextQuote()">
-                                    <i class="fas fa-angle-right"></i>
-                                </button>
-                            </ng-container>
-                            <ng-container *ngIf="!quote">
-                                <h4>Nothing. Only silence...</h4>
-                            </ng-container>
+    <input type="text" [(ngModel)]="searchText" placeholder="Search" *ngIf="!loading">
+    <div class="card-container">
+        <ng-container *ngFor="let person of persons | search: searchText; let i = index">
+            <div id="{{person.name}}" class="card" [ngClass]="person.expanded ? 'big' : 'small'">
+                <div class="card-content">
+                    <h4 *ngIf="!person.expanded" (click)="togglePerson(person)">{{ person.name }}</h4>
+                    <ng-container *ngIf="person.expanded">
+                        <h4 (click)="togglePerson(person)">{{person.name}}</h4>
+                        <div class="card-description">
+                            <span (click)="navigate(person.house?.name)">{{person.house?.name}}</span>
+                            <div class="quote">
+                                <ng-container *ngIf="quote">
+                                    <button class="circular-button menu-button" (click)="prevQuote()">
+                                        <i class="fas fa-angle-left"></i>
+                                    </button>
+                                    <h4>"{{quote}}"</h4>
+                                    <button class="circular-button menu-button" (click)="nextQuote()">
+                                        <i class="fas fa-angle-right"></i>
+                                    </button>
+                                </ng-container>
+                                <ng-container *ngIf="!quote">
+                                    <h4>Nothing. Only silence...</h4>
+                                </ng-container>
+                            </div>
                         </div>
-                    </div>
-                </ng-container>
+                    </ng-container>
+                </div>
             </div>
-        </div>
-    </ng-container>
+        </ng-container>
+    </div>
 </ng-template>

@@ -1,28 +1,27 @@
-<input type="text" [(ngModel)]="searchText" placeholder="Search" *ngIf="!loading">
-
-<div class="card-container">
-    <ng-container *ngIf="loading; else content">
-        <i class="fas fa-sync-alt fa-spin fa-lg"></i>
-    </ng-container>
-</div>
+<ng-container *ngIf="loading; else content">
+    <i class="fas fa-sync-alt fa-spin fa-lg"></i>
+</ng-container>
 
 <ng-template #content>
-    <ng-container *ngFor="let house of houses | search: searchText; let i = index">
-        <div id="{{house.name}}" class="card" [ngClass]="house.expanded ? 'big' : 'small'" (click)="toggleHouse(house)">
-            <div class="card-content">
-                <h4 *ngIf="!house.expanded">{{ house.slug }}</h4>
-                <ng-container *ngIf="house.expanded">
-                    <h4>{{house.name}}</h4>
-                    <div class="house-description">
-                        <h5>Members</h5>
-                        <ng-container *ngFor="let member of house.members; let i = index">
-                            <div class="member">
-                                <span (click)="navigate(member.name)">{{i+1}}: {{member.name}}</span>
-                            </div>
-                        </ng-container>
-                    </div>
-                </ng-container>
+    <input type="text" [(ngModel)]="searchText" placeholder="Search">
+    <div class="card-container">
+        <ng-container *ngFor="let house of houses | search: searchText; let i = index">
+            <div id="{{house.name}}" class="card" [ngClass]="house.expanded ? 'big' : 'small'" (click)="toggleHouse(house)">
+                <div class="card-content">
+                    <h4 *ngIf="!house.expanded">{{ house.slug }}</h4>
+                    <ng-container *ngIf="house.expanded">
+                        <h4>{{house.name}}</h4>
+                        <div class="house-description">
+                            <h5>Members</h5>
+                            <ng-container *ngFor="let member of house.members; let i = index">
+                                <div class="member">
+                                    <span (click)="navigate(member.name)">{{i+1}}: {{member.name}}</span>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                </div>
             </div>
-        </div>
-    </ng-container>
+        </ng-container>
+    </div> 
 </ng-template>
